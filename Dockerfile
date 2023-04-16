@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Install the application dependencies
-RUN npm install
+RUN npm install --force
 
 # Build the React application
 RUN npm run build
