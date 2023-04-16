@@ -24,8 +24,7 @@ async function run() {
         app.get('/projects', async (req, res) => {
             const data = await projectsCollection.find().toArray();
             res.send(data);
-            console.log(data)
-        });
+        });g
 
 
 
