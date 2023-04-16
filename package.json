@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node": "16.15.1"
+    "node": "16.x",
+    "npm": "7.x",
+    "yarn": ">=1.19.0 < 2.0.0"
   },
   "scripts": {
     "start": "node index.js",
