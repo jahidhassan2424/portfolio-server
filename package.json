@@ -8,12 +8,10 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
+    "st-dev": "nodemon index.js",
+    "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
     "build": "webpack --config=Scripts/config/webpack.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "push": "git add . && node ../../gitpush/gitpush.js && git push",
-    "git-deploy": "git add . && node ../../gitpush/gitpush.js && git push && react-scripts build && firebase deploy",
-    "git-init": "git init && git add . && git commit -m \"first commit\" && git branch -M main && node ../../gitpush/gitinit.js && git push -u origin main "
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
