@@ -29,7 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.10.0",
     "mongoose": "^6.6.5",
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.18",
+    "webpack-cli":"^5.0.1"
   },
   "devDependencies": {
     "webpack": "^5.79.0",
