@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config()
 const port = process.env.PORT || 3001;
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const nodemailer = require('nodemailer');
 //middle wire
 
 app.use(cors())
@@ -24,7 +25,41 @@ async function run() {
         app.get('/projects', async (req, res) => {
             const data = await projectsCollection.find().toArray();
             res.send(data);
-        }); g
+        });
+        app.post('/email', async (req, res) => {
+            // console.log("hit");
+            // console.log(req.body);
+            const body = req.body;
+            const toEmail = body.toEmail;
+            const subject = body.subject;
+            const text = body.text;
+
+            const transporter = nodemailer.createTransport({
+                service: "hotmail",
+                auth: {
+
+                    user: process.env.sendFromEmail,
+                    pass: process.env.passSendFrom,
+                },
+                from: process.env.sendFromEmail,
+
+            });
+            const options = {
+                from: req.body.sendFromEmail,
+                to: `${toEmail}`,
+                subject: `${subject}`,
+                text: `${text}`
+            }
+            transporter.sendMail(options, function (err, info) {
+                if (err) {
+                    console.log(err);
+                    res.send({ success: false })
+                }
+                else {
+                    res.send({ success: true })
+                }
+            })
+        });
 
 
 
@@ -36,7 +71,6 @@ async function run() {
 run().catch(console.dir);
 
 app.get('/', async (req, res) => {
-    console.log("working");
     res.send("Server Running")
 });
 
