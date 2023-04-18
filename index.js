@@ -33,7 +33,7 @@ async function run() {
             const toEmail = body.toEmail;
             const subject = body.subject;
             const text = body.text;
-
+            // 
             const transporter = nodemailer.createTransport({
                 service: "hotmail",
                 auth: {
