@@ -21,14 +21,19 @@ async function run() {
 
         //get requests
 
+
         //Get all projects
         app.get('/projects', async (req, res) => {
             const data = await projectsCollection.find().toArray();
             res.send(data);
         });
+        app.get('/projects/:id', async (req, res) => {
+            const { id } = req.params;
+            const data = await projectsCollection.find({ _id: ObjectId(id) }).toArray();
+            res.send(data);
+        });
         app.post('/email', async (req, res) => {
-            // console.log("hit");
-            // console.log(req.body);
+
             const body = req.body;
             const toEmail = body.toEmail;
             const subject = body.subject;
@@ -65,6 +70,7 @@ async function run() {
 
 
     } catch (error) {
+        console.log(error);
 
     }
 }
