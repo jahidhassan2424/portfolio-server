@@ -19,9 +19,7 @@ async function run() {
         console.log('DB Connected');
         const projectsCollection = client.db("Portfolio").collection("projects");
 
-
         //get requests
-
 
         //Get all projects
         app.get('/projects', async (req, res) => {
@@ -79,6 +77,9 @@ run().catch(console.dir);
 
 app.get('/', async (req, res) => {
     res.send("Server Running")
+});
+app.get('/test', async (req, res) => {
+    res.send("Test Successfull")
 });
 
 app.listen(port, async (req, res) => {
